@@ -1,0 +1,45 @@
+{
+  "_comment": "【补充文件 · RAG 评测集】 新增时间: 2026-07-23 | 说明: 基于 knowledge_base 现有文档人工构造的问答评测集(golden set)，用于量化 RAG 回答质量。question=问题, ground_truth=参考答案, expected_sources=期望检索命中的文档名。",
+  "samples": [
+    {
+      "question": "什么是RAG？",
+      "ground_truth": "RAG（检索增强生成）是一种将信息检索与文本生成相结合的技术架构，在生成答案前先从外部知识库检索相关信息，让大语言模型基于最新、准确的信息回答问题，核心是先检索再生成。",
+      "expected_sources": ["rag_introduction.md"]
+    },
+    {
+      "question": "RAG相比微调（Fine-tuning）有什么优势？",
+      "ground_truth": "RAG更新知识只需更新知识库无需重新训练模型，成本低；回答基于真实文档可减少幻觉且可追溯来源；适合知识密集型问答。而微调需要重新训练、成本高，更适合风格或格式调整。",
+      "expected_sources": ["rag_introduction.md"]
+    },
+    {
+      "question": "FAISS和Chroma这两个向量库有什么区别？",
+      "ground_truth": "FAISS由Meta开发，性能高、支持GPU和多种索引算法，速度极快但本身不持久化、API较底层，适合大规模检索；Chroma轻量、API友好、自动持久化、支持元数据过滤，适合原型开发和中小规模应用。",
+      "expected_sources": ["vector_database.txt"]
+    },
+    {
+      "question": "常见的向量索引算法有哪些？各自适合多大的数据量？",
+      "ground_truth": "常见索引算法有：Flat暴力搜索，精确但慢，适合10万以内；IVF倒排文件索引，较快是近似搜索需训练，适合10万到1000万；HNSW图索引，速度快精度高但内存消耗大；PQ乘积量化，极大降低内存但有精度损失，适合超大规模。",
+      "expected_sources": ["vector_database.txt"]
+    },
+    {
+      "question": "什么是MMR（最大边际相关性）？",
+      "ground_truth": "MMR（最大边际相关性）是一种在保持相关性的同时增加结果多样性的检索策略，避免返回大量内容重复的文档。通过参数λ平衡相关性和多样性，λ越大越偏向相关性，越小越偏向多样性。",
+      "expected_sources": ["rag_optimization.txt"]
+    },
+    {
+      "question": "查询改写（Query Rewriting）的作用是什么？",
+      "ground_truth": "查询改写是通过LLM把用户口语化或表述不清的原始问题改写为更适合检索的形式，补充关键词和同义词，从而提高检索的召回率和质量。例如把“RAG怎么用”改写为“RAG检索增强生成的使用方法和实现步骤”。",
+      "expected_sources": ["rag_optimization.txt"]
+    },
+    {
+      "question": "通义千问的Embedding模型叫什么？向量维度是多少？",
+      "ground_truth": "通义千问的嵌入模型是text-embedding-v3，默认向量维度为1024，中英文效果好且支持多种维度。",
+      "expected_sources": ["embedding_models.txt"]
+    },
+    {
+      "question": "有哪些推荐的本地Embedding模型？",
+      "ground_truth": "推荐的本地嵌入模型主要是BGE系列（BAAI），包括bge-small-zh-v1.5（512维，轻量）、bge-base-zh-v1.5（768维）、bge-large-zh-v1.5（1024维）以及多语言的bge-m3。它们开源免费、可本地部署，适合对数据隐私要求高的场景。",
+      "expected_sources": ["embedding_models.txt"]
+    }
+  ]
+}

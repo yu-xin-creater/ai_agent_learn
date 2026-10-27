@@ -1,0 +1,22 @@
+# 小智智能助手依赖 (LangChain 1.0)
+# 补充时间: 2026-07-23
+
+# ---- 核心框架 (1.0+) ----
+langchain>=1.0,<2.0            # 1.0 核心：create_agent + middleware
+langchain-core>=1.0,<2.0      # 基础抽象：消息 / 工具 / content blocks
+langgraph>=1.0,<2.0           # 底层运行时：图 / 状态 / 持久化 / 中断
+
+# ---- 模型集成 ----
+langchain-community>=0.4.0    # ChatTongyi (通义千问)
+dashscope>=1.20.0             # 通义千问 SDK
+
+# ---- 工具 ----
+python-dotenv>=1.0.0          # .env 环境变量
+pydantic>=2.0                 # 结构化输出
+
+# ---- 可选：切换其他厂商时按需安装 ----
+# langchain-openai>=1.0        # OpenAI / 兼容接口
+# langchain-anthropic>=1.0     # Claude
+
+# ---- 可选：生产可观测性 ----
+# langsmith>=0.1.0             # LangSmith 追踪(设置 LANGSMITH_API_KEY 即用)
